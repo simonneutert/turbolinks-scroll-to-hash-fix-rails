@@ -1,15 +1,15 @@
-# Turbolinks::Scroll::To::Hash::Fix::Rails
+# turbolinks-scroll-to-hash-fix-rails
 
 Because of Turbolinks your Rails App's anchor or bookmark links won't work as they should. Don't be afraid, this gem contains some simple CoffeeScript to the rescue.
 
-**dependencies:** jquery, turbolinks (and rails)
+**dependencies:** jquery, CoffeeScript, turbolinks (and rails)
 
 ## Installation
 
-Add this line to your application's Gemfile:
-Either use this code:
+Either use this CoffeeScript:
 
 ``` CoffeeScript
+# CoffeeScript
 $(document).on 'turbolinks:load', ->
   if window.location.hash != ""
     setTimeout ->
@@ -26,6 +26,29 @@ $(document).on 'turbolinks:load', ->
 
 **or**
 
+The JavaScript/jQuery version:
+
+``` javascript
+$(document).on('turbolinks:load', function() {
+  if (window.location.hash !== "") {
+    return setTimeout(function() {
+      var error;
+      try {
+        return $('html, body').animate({
+          scrollTop: $(window.location.hash).offset().top + 'px'
+        }, 1);
+      } catch (error1) {
+        error = error1;
+        return "Anchor not found. " + error;
+      }
+    }, 1);
+  }
+});
+```
+
+
+**or**
+Add this line to your application's Gemfile:
 
 ```ruby
 gem 'turbolinks-scroll-to-hash-fix-rails'
@@ -40,11 +63,18 @@ Or install it yourself as:
     $ gem install turbolinks-scroll-to-hash-fix-rails
 
 ## Usage
-
 Insert in `application.js` before `//= require_tree .`
 
+**Choose between the CoffeeScript and the JavaScript/jQuery file.**
+
+For the CoffeeScript variant:
 ``` javascript
 //= require turbolinks-scroll-to-hash-fix-rails
+```
+
+For the JavaScript/jQuery variant:
+``` javascript
+//= require turbolinks-scroll-to-hash-fix-rails-nocoffee
 ```
 
 ## Development
