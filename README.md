@@ -2,7 +2,7 @@
 
 Because of Turbolinks your Rails App's anchor or bookmark links won't work as they should. Don't be afraid, this gem contains some simple CoffeeScript to the rescue.
 
-**dependencies: jquery, turbolinks (and rails)**
+**dependencies:** jquery, turbolinks (and rails)
 
 ## Installation
 
