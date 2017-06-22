@@ -1,12 +1,31 @@
 # Turbolinks::Scroll::To::Hash::Fix::Rails
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/turbolinks/scroll/to/hash/fix/rails`. To experiment with that code, run `bin/console` for an interactive prompt.
+Because of Turbolinks your Rails App's anchor or bookmark links won't work as they should. Don't be afraid, this gem contains some simple CoffeeScript to the rescue.
 
-TODO: Delete this and the text above, and describe your gem
+**dependencies: jquery, turbolinks (and rails)**
 
 ## Installation
 
 Add this line to your application's Gemfile:
+Either use this code:
+
+``` CoffeeScript
+$(document).on 'turbolinks:load', ->
+  if window.location.hash != ""
+    setTimeout ->
+      # smooth scroll to the anchor id
+      try
+        $('html, body').animate
+          scrollTop: $(window.location.hash).offset().top + 'px'
+        ,1
+      catch error
+        "Anchor not found. #{error}"
+    ,1
+
+```
+
+**or**
+
 
 ```ruby
 gem 'turbolinks-scroll-to-hash-fix-rails'
