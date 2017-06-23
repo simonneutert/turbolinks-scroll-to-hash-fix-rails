@@ -51,7 +51,7 @@ $(document).on('turbolinks:load', function() {
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'turbolinks-scroll-to-hash-fix-rails'
+gem 'turbolinks-scroll-to-hash-fix-rails', :git => 'https://github.com/simonneutert/turbolinks-scroll-to-hash-fix-rails'
 ```
 
 And then execute:
