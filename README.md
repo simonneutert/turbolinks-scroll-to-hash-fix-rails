@@ -5,53 +5,10 @@ Because of Turbolinks your Rails App's anchor or bookmark links won't work as th
 **dependencies:** jquery, CoffeeScript, turbolinks (and rails)
 
 ## Installation
-
-Either use this CoffeeScript:
-
-``` CoffeeScript
-# CoffeeScript
-$(document).on 'turbolinks:load', ->
-  if window.location.hash != ""
-    setTimeout ->
-      # smooth scroll to the anchor id
-      try
-        $('html, body').animate
-          scrollTop: $(window.location.hash).offset().top + 'px'
-        ,1
-      catch error
-        "Anchor not found. #{error}"
-    ,1
-
-```
-
-**or**
-
-The JavaScript/jQuery version:
-
-``` javascript
-$(document).on('turbolinks:load', function() {
-  if (window.location.hash !== "") {
-    return setTimeout(function() {
-      var error;
-      try {
-        return $('html, body').animate({
-          scrollTop: $(window.location.hash).offset().top + 'px'
-        }, 1);
-      } catch (error1) {
-        error = error1;
-        return "Anchor not found. " + error;
-      }
-    }, 1);
-  }
-});
-```
-
-
-**or**
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'turbolinks-scroll-to-hash-fix-rails'
+gem 'turbolinks-scroll-to-hash-fix-rails', :git => 'https://github.com/simonneutert/turbolinks-scroll-to-hash-fix-rails'
 ```
 
 And then execute:
